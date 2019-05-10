@@ -1,26 +1,10 @@
 /***************************************************************************
- * @name: Main source code
+ * @name: Hardware header file
  * @brief:
  * @author: Ivan Pavao Lozancic ivanplozancic@gmail.com
  * ************************************************************************/
 
-#include<main.h>
+#include <main.h>
+#include <display.h>
 
-#include<display.h>
-#include<hardware.h>
-
-void setup() {
-
-  hardwareSetup();
-
-}
-
-void loop() {
-
-  display.clear();
-
-  displayUpdateRPM(millis());
-  
-  display.display();
-
-}
+void hardwareSetup();

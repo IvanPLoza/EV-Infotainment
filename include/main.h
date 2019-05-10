@@ -1,26 +1,7 @@
 /***************************************************************************
- * @name: Main source code
+ * @name: Main header file
  * @brief:
  * @author: Ivan Pavao Lozancic ivanplozancic@gmail.com
  * ************************************************************************/
 
-#include<main.h>
-
-#include<display.h>
-#include<hardware.h>
-
-void setup() {
-
-  hardwareSetup();
-
-}
-
-void loop() {
-
-  display.clear();
-
-  displayUpdateRPM(millis());
-  
-  display.display();
-
-}
+#include <Arduino.h>    //Arduino framework
