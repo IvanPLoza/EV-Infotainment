@@ -27,7 +27,7 @@ void loop() {
 
   displayUpdateBatteryLevel(i);
 
-  displayUpdateRPM(i);
+  displayUpdateRPM(6000);
 
   display.display();
 
