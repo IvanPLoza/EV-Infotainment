@@ -5,3 +5,5 @@
  * ************************************************************************/
 
 #include <Arduino.h>    //Arduino framework
+
+#define DEBUG

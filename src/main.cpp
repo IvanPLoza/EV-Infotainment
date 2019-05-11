@@ -8,6 +8,7 @@
 
 #include<display.h>
 #include<hardware.h>
+#include<buttons.h>
 
 void setup() {
 
@@ -17,10 +18,18 @@ void setup() {
 
 void loop() {
 
+  for(uint8_t i = 0; i <=255; i++){
+
   display.clear();
 
-  displayUpdateRPM(millis());
-  
+  //displayUpdateRPM(millis());
+  readGearButton();
+
+  displayUpdateBatteryLevel(i);
+
+  displayUpdateRPM(i);
+
   display.display();
 
+  }
 }
