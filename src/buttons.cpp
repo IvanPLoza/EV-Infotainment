@@ -62,4 +62,7 @@ void readGearButton(){
     
     //Display the gear
     displayUpdateGearState(lastGear);
+
+    //Change the gear with relay
+    changeGear(lastGear);
 }

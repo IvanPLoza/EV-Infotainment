@@ -18,18 +18,15 @@ void setup() {
 
 void loop() {
 
-  for(uint8_t i = 0; i <=255; i++){
-
   display.clear();
 
   //displayUpdateRPM(millis());
   readGearButton();
 
-  displayUpdateBatteryLevel(i);
+  displayUpdateBatteryLevel(100);
 
   displayUpdateRPM(6000);
 
   display.display();
 
-  }
 }
