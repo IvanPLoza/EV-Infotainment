@@ -29,6 +29,7 @@ void changeGear(uint8_t gear){
 
         case 0x00:
             digitalWrite(GEAR_RELAY1_PIN, LOW);
+            digitalWrite(GEAR_RELAY2_PIN, LOW);
         break;
 
         case 0x01:

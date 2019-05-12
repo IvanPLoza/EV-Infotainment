@@ -20,7 +20,6 @@ void loop() {
 
   display.clear();
 
-  //displayUpdateRPM(millis());
   readGearButton();
 
   displayUpdateBatteryLevel(100);

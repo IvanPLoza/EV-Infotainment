@@ -8,7 +8,8 @@
 
 uint32_t previousTimeGearButton = 0;
 bool previousStateGearButton = false;
-uint8_t lastGear = 0;
+uint8_t lastGear = GEAR_BUTTON_NEUTRAL;
+bool reverseFlag = false;
 
 void readGearButton(){
 
@@ -24,15 +25,12 @@ void readGearButton(){
     //Check for user gear input
     if(gearButtonState == true) {
 
-        if(lastGear == GEAR_BUTTON_REVERSE && previousStateGearButton == false){
-
-            lastGear = GEAR_BUTTON_FORWARD;
-        }
-
-        if(currentTime > previousTimeGearButton + GEAR_BUTTON_TIMER_DELAY){
+        if(currentTime > previousTimeGearButton + GEAR_BUTTON_TIMER_DELAY && lastGear == GEAR_BUTTON_NEUTRAL){
 
            //REVERSE
            lastGear = GEAR_BUTTON_REVERSE;
+
+           reverseFlag = true;
         }
 
         previousStateGearButton = true;
@@ -40,18 +38,28 @@ void readGearButton(){
 
     else{
 
-        if(previousStateGearButton == true && lastGear != GEAR_BUTTON_REVERSE){
+        if(previousStateGearButton == true){
+            
+            if(reverseFlag == false){
 
-            //Change to forward
-            if(lastGear == GEAR_BUTTON_NEUTRAL){
+                //Change to forward
+                if(lastGear == GEAR_BUTTON_NEUTRAL){
 
-                lastGear = GEAR_BUTTON_FORWARD;
+                    lastGear = GEAR_BUTTON_FORWARD;
+                }
+
+                //Change to neutral
+                else if(lastGear == GEAR_BUTTON_FORWARD || lastGear == GEAR_BUTTON_REVERSE) {
+
+                    lastGear = GEAR_BUTTON_NEUTRAL;
+                }
+
             }
+            else{
 
-            //Change to neutral
-            else if(lastGear == GEAR_BUTTON_FORWARD) {
+                lastGear = GEAR_BUTTON_REVERSE;
 
-                lastGear = GEAR_BUTTON_NEUTRAL;
+                reverseFlag = false;
             }
         }
 
