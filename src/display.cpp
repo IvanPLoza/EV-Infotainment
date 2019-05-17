@@ -16,20 +16,12 @@ void displayInit(){
     display.clear();
 
     //************ PRINT THE WELCOME SCREEN ************
-    //Align the text to center
-    display.setTextAlignment(TEXT_ALIGN_CENTER_BOTH);
-
-    //Set the font
-    display.setFont(ArialMT_Plain_16); 
-
-    //Print the school name
-    display.drawString(64, 22,  WLC_MSG_FIRST);
-
-    //Set the font
-    display.setFont(ArialMT_Plain_10); 
-
-    //Print the version
-    display.drawString(64, 42,  WLC_MSG_SECOND);
+    display.setTextAlignment(TEXT_ALIGN_CENTER_BOTH);   //Align the text to center
+    display.setFont(ArialMT_Plain_16);                  //Set the font
+    display.drawString(64, 22,  WLC_MSG_FIRST);         //Print the school name
+    display.setFont(ArialMT_Plain_10);                  //Set the font
+    
+    display.drawString(64, 42,  WLC_MSG_SECOND);        //Print the version
 
     display.display();
 
@@ -39,46 +31,37 @@ void displayInit(){
 
 void displayUpdateRPM(uint16_t rpm){
 
-    String batteryString;
+    String rpmString;
     
-    batteryString = "RPM: ";
-    batteryString += String(rpm);
+    rpmString = "RPM: ";
+    rpmString += String(rpm);
 
-    //Set the font for gear
-    display.setFont(ArialMT_Plain_16);
+    display.setFont(ArialMT_Plain_16);          //Set the font for gear
+    display.setTextAlignment(TEXT_ALIGN_LEFT);  //Center the text
 
-    //Center the text
-    display.setTextAlignment(TEXT_ALIGN_LEFT);
-
-    display.drawString(49, 10, batteryString);
+    display.drawString(49, 10, rpmString);  //Display the battery percentage
 }
 
 void displayUpdateGearState(uint8_t gear){
 
-    //Set the font for gear
-    display.setFont(ArialMT_Plain_24);
-
-    //Center the text
-    display.setTextAlignment(TEXT_ALIGN_LEFT);
+    display.setFont(ArialMT_Plain_24);          //Set the font for gear
+    display.setTextAlignment(TEXT_ALIGN_LEFT);  //Center the text
 
     switch(gear){
 
         case 0x00:
 
-            //Display NEUTRAL gear
-            display.drawString(15, 18, INFT1_MSG_GEAR_NEUTRAL);
+            display.drawString(15, 18, INFT1_MSG_GEAR_NEUTRAL); //Display NEUTRAL gear
         break;
 
         case 0x01:
 
-            //Display FORWARD gear
-            display.drawString(15, 18, INFT1_MSG_GEAR_FORWARD);
+            display.drawString(15, 18, INFT1_MSG_GEAR_FORWARD); //Display FORWARD gear
         break;
 
         case 0x02:
 
-            //Display REVERSE gear
-            display.drawString(15, 18, INFT1_MSG_GEAR_REVERSE);
+            display.drawString(15, 18, INFT1_MSG_GEAR_REVERSE); //Display REVERSE gear
         break;
     }
 }
@@ -90,11 +73,8 @@ void displayUpdateBatteryLevel(uint8_t batteryLevel){
     batteryString = "BAT: ";
     batteryString += String(batteryLevel);
 
-    //Set the font for gear
-    display.setFont(ArialMT_Plain_16);
-
-    //Center the text
-    display.setTextAlignment(TEXT_ALIGN_LEFT);
+    display.setFont(ArialMT_Plain_16);          //Set the font for gear
+    display.setTextAlignment(TEXT_ALIGN_LEFT);  //Center the text
 
     display.drawString(49, 38, batteryString);
 }

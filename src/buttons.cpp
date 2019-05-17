@@ -6,14 +6,17 @@
 
 #include <buttons.h>
 
-uint32_t previousTimeGearButton = 0;
+/*uint32_t previousTimeGearButton = 0;
 bool previousStateGearButton = false;
 uint8_t lastGear = GEAR_BUTTON_NEUTRAL;
-bool reverseFlag = false;
+bool reverseFlag = false;*/
+
+uint8_t currentGear = 1;
 
 void readGearButton(){
 
-    uint32_t currentTime;
+    // OLD GEAR CHANGING SYSTEM
+    /*uint32_t currentTime;
     bool gearButtonState;
 
     //Get the time of the read
@@ -35,7 +38,6 @@ void readGearButton(){
 
         previousStateGearButton = true;
     }   
-
     else{
 
         if(previousStateGearButton == true){
@@ -72,5 +74,30 @@ void readGearButton(){
     displayUpdateGearState(lastGear);
 
     //Change the gear with relay
-    changeGear(lastGear);
+    changeGear(lastGear);*/
+
+    uint32_t currentTime;
+    bool upButtonState;
+    bool downButtonState;
+
+    upButtonState = digitalRead(GEAR_UP_BUTTON_PIN);
+    downButtonState = digitalRead(GEAR_DOWN_BUTTON_PIN);
+
+    currentTime = millis();
+
+    if(GEAR_UP_BUTTON_PIN == true){
+
+        //GEAR UP REQUESTED
+        changeGear(currentGear++);
+    }
+    else if(GEAR_UP_BUTTON_PIN == true){
+
+        changeGear(currentGear--);
+    }
+
+    displayUpdateGearState(currentGear);
+}
+
+void readRoadTripButton(){
+    
 }

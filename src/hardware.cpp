@@ -12,7 +12,8 @@ void hardwareSetup(){
     displayInit();
 
     //Init buttons
-    pinMode(GEAR_BUTTON_PIN, INPUT);
+    pinMode(GEAR_UP_BUTTON_PIN, INPUT);
+    pinMode(GEAR_DOWN_BUTTON_PIN, INPUT);
     pinMode(2, INPUT);
 
     //Gear relays config

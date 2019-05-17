@@ -28,7 +28,5 @@ extern SSD1306 display;
 void displayInit();
 
 void displayUpdateRPM(uint16_t rpm);
-
 void displayUpdateGearState(uint8_t gear);
-
 void displayUpdateBatteryLevel(uint8_t batteryLevel);

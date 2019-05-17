@@ -15,3 +15,4 @@
 #define GEAR_BUTTON_REVERSE     0x02
 
 void readGearButton();
+void readRoadTripButton();
